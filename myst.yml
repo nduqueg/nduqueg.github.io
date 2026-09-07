@@ -17,12 +17,12 @@ project:
     - CONDUCT.md
     - CONTRIBUTING.md
     - README.md
-  github: nduqueg/duque-gardeazabal
+  github: nduqueg/nduqueg.github.io
   linkedin: in/nicolas-duque-gardeazabal-phd-59a93683/?locale=en
   researchgate: profile/Nicolas-Duque-Gardeazabal?ev=hdr_xprf
   thebe:
     binder:
-      repo: nduqueg/duque-gardeazabal
+      repo: nduqueg/nduqueg.github.io
       provider: github
       url: https://mybinder.org
       ref: main
