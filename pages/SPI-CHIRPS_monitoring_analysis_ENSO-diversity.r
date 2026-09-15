@@ -103,10 +103,11 @@ if (file.exists("SPI-CHIRPS_monitoring.RData")){
   
   
 } else {
-  aux <- terra::extract(SPI, terra::vect(AH), cells = TRUE, xy =T)
+  aux <- terra::extract(SPI, AH, cells = TRUE, xy =T)
   
   class.area <- class.area.f(aux, n.dates, dates, nom_AH)
   
+  last.dates <- row.names(class.area[[1]] ) %>% tail(1)
   # save(class.area, "class.area", file="SPI-CHIRPS_monitoring_AreaClass.RData")
 }
 
@@ -171,7 +172,8 @@ ggsave("SPI3-CHIRPS_monitoring_Col_zoom2015-16.png", plot= p1,
 
 
 p2 <- ggplot()+
-  geom_area(data=data.g %>%  subset(., Index >= as.Date("2025-07-01")), 
+  geom_area(data=data.g %>%  subset(., 
+                                    Index >= paste0(year-1,"-",month,"-01") %>% as.Date()), 
             aes(Index, Value, fill=Series)) + 
   scale_fill_manual(values = paleta, name="Class.") + 
   scale_x_date(date_breaks = "3 months", date_labels = "%Y-%m", expand = c(0.01,0.01)) +
@@ -265,14 +267,14 @@ ELI.c.g <- reshape2::melt(ELI.c, id=c("Month","drought")) %>% subset(,select = -
 
 
 # plotting east  vs central pacific ----
-lab.sign <- data.frame(x=2.5,y=10,texto="@duque-gardeazabal\ndata: CHIRPS", div) %>% 
+lab.sign <- data.frame(x=2.5,y=5,texto="@duque-gardeazabal\ndata: CHIRPS", div) %>% 
   rbind(.,.); lab.sign[2,4] <- "East Pacific events"
 paleta <- brewer.pal(9, "BrBG")[1:3] %>% magrittr::set_names(c("extremely dry", "severely dry", "moderately dry"))
 p.title <- paste("Evolution of area under Drought El Niño events in the", paste(nom_AH[sel.col.areas], collapse = ", ") ,"regions - Colombia")
 
 
 t.last.month <- rbind( ELI.c.g %>% subset(., Month == 12),
-                       ELI.e.g %>% subset(., Month == 12))
+                       ELI.e.g %>% subset(., Month == 12 | (Event == "2026" & Month == month)))
 library(ggrepel)
 ggplot() + facet_wrap(.~ div, ncol = 1) +
   geom_line(data= ELI.c.g, aes(Month, drought, group = Event, colour = Series), linewidth = 2)+
@@ -282,8 +284,8 @@ ggplot() + facet_wrap(.~ div, ncol = 1) +
                      name="Intensity")+
   
   scale_x_continuous(labels= rep(month.abb,2), breaks=1:24, expand = c(0.01,0.01))+
-  geom_text(data = lab.sign, aes(x, y, label= texto))+
-  geom_text_repel(data = t.last.month, aes(x = Month , y = drought, label= Event), nudge_x = -0.5, nudge_y = 5)+
+  geom_text(data = lab.sign, aes(x, y, label= texto), fontface = "bold")+
+  geom_text_repel(data = t.last.month, aes(x = Month , y = drought, label= Event), nudge_x = -0.5, nudge_y = 5, fontface = "bold")+
   labs(y="[%] Area affected by precipitation deficit (SPI-3)", 
        x="Month since January of year 0 and year 1",
        title=p.title)+
@@ -301,21 +303,21 @@ ggsave("SPI-3_Evolution_central_East_Pacific_ENSO.png",
 
 
 last.month <- substr(last.dates,6,7) %>% as.numeric()
-t.last.month <- rbind( ELI.c.g %>% subset(., Month == last.month +1),
-                       ELI.e.g %>% subset(., Month == last.month +1))
+t.last.month <- rbind( ELI.c.g %>% subset(., Month == last.month ),
+                       ELI.e.g %>% subset(., Month == last.month ))
 
 ggplot() + facet_wrap(.~ div, ncol = 2) +
-  geom_line(data= ELI.c.g %>% subset(., Month <= last.month +1),
+  geom_line(data= ELI.c.g %>% subset(., Month <= last.month),
             aes(Month, drought, group = Event, colour = Series), linewidth = 2)+
   
-  geom_line(data= ELI.e.g %>% subset(., Month <= last.month +1),
+  geom_line(data= ELI.e.g %>% subset(., Month <= last.month),
             aes(Month, drought, group = Event, colour = Series), linewidth = 3)+ 
   scale_color_manual(values=paleta, breaks =c("extremely dry", "severely dry", "moderately dry"),
                      name="Intensity")+
   
   scale_x_continuous(labels= rep(month.abb,2), breaks=1:24, expand = c(0.01,0.01))+
-  geom_text(data = lab.sign, aes(x, y, label= texto))+
-  geom_text_repel(data = t.last.month, aes(x = Month , y = drought, label= Event), nudge_x = -0.5, nudge_y = 5)+
+  geom_text(data = lab.sign, aes(x, y, label= texto), fontface = "bold")+
+  geom_text_repel(data = t.last.month, aes(x = Month , y = drought, label= Event), nudge_x = -0.5, nudge_y = 5, fontface = "bold")+
   labs(y="[%] Area affected by precipitation deficit (SPI-3)", 
        x="Month since January of year 0 and year 1",
        title=p.title)+
@@ -331,3 +333,4 @@ ggplot() + facet_wrap(.~ div, ncol = 2) +
 
 ggsave("SPI-3_Monitoring_Evolution_ENSO.png",
        dpi=300,width = 1400*3/300,height = 700*3/300, units = "in")
+
