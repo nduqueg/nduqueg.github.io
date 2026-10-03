@@ -60,7 +60,5 @@ ch.file.ELI <- function(x){
 ch.file.ELI("../index.md")
 ch.file.ELI("./part01/ENSO_diversity.md")
 
-file.copy("G:/Mi unidad/_PhD/ENSO/ELI_Evolution_central_East_Pacific_ENSO.png",
-          "../images/ELI_Evolution_central_East_Pacific_ENSO.png", overwrite = T)
-file.copy("G:/Mi unidad/_PhD/ENSO/SOI/SOI_Evolution_central_East_Pacific_ENSO.png",
-          "../images/SOI_Evolution_central_East_Pacific_ENSO.png", overwrite = T)
+setwd("G:/Mi unidad/_PhD/ENSO")
+source("G:/Mi unidad/_PhD/ENSO/ELI_eastPacific_central_ENSO.R")
