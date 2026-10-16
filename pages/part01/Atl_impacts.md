@@ -42,8 +42,8 @@ Forecasting these modes is possible and thus we can predict the impacts they hav
 
 ## Current values - Atlantic modes
 
-Date: 2026-08-03
+Date: 2026-09-04
 
-Meridional mode:  0.30 - includes the retrival of global warming implicitly
+Meridional mode:  0.34 - includes the retrival of global warming implicitly
 
-Equatorial mode:  0.22 - includes global warming, this calculation does not retrieve the rising trend in SSTs (under construction) 
+Equatorial mode:  0.39 - includes global warming, this calculation does not retrieve the rising trend in SSTs (under construction) 

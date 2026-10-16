@@ -5,7 +5,7 @@ library(raster)
 library(ncdf4)
 "%>%" = magrittr::'%>%'
 
-setwd("C:/NDG/duque-gardeazabal/pages")
+setwd("C:/NDG/nduqueg.github.io/pages")
 
 ## download current monthly value ----
 ersst_url <- "https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/netcdf/"
@@ -49,7 +49,7 @@ ch.file.ELI <- function(x){
   a <- readLines(x)
   
   find <- grep("**Current El Niño Longitude Index (ELI)", a, fixed = T) %>% as.numeric()
-  b <- read.csv("Current_ELI.csv",header=T) %>% round(.,1)
+  b <- read.csv("Current_ELI.csv",header=T) %>% round(.,1) %>% as.character()
   
   substr(a[ find ], 43, 47) <- format(b, nsmall=1)
   substr(a[ find ], 57, 66) <- as.character(today)

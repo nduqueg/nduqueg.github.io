@@ -18,7 +18,7 @@ exports:
     output: _build/exports/typst/
 ---
 
-**Current El Niño Longitude Index (ELI) = 186.9 - Date: 2026-08-03**
+**Current El Niño Longitude Index (ELI) = 188.8 - Date: 2026-09-03**
 
 # Every El Niño event is different and also its impacts
 

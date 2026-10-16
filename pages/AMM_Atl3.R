@@ -5,7 +5,7 @@ library(raster)
 library(ncdf4)
 "%>%" = magrittr::'%>%'
 
-setwd("C:/NDG/duque-gardeazabal/pages")
+setwd("C:/NDG/nduqueg.github.io/pages")
 
 ## download current monthly value ----
 ersst_url <- "https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/netcdf/"
@@ -60,3 +60,8 @@ ch.file.Atl <- function(x){
 }
 
 ch.file.Atl("./part01/Atl_impacts.md")
+
+file.copy("G:/Mi unidad/_PhD/ENSO/ELI_Evolution_central_East_Pacific_ENSO.png",
+          "../images/ELI_Evolution_central_East_Pacific_ENSO.png", overwrite = T)
+file.copy("G:/Mi unidad/_PhD/ENSO/SOI/SOI_Evolution_central_East_Pacific_ENSO.png",
+          "../images/SOI_Evolution_central_East_Pacific_ENSO.png", overwrite = T)
