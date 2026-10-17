@@ -16,6 +16,12 @@ Welcome to this *anxious* attempt to help create a better world through analysin
 
 This helps to improve forecasts, adjust logistic processes and *reduce the impacts on businesses* (climate services).
 
+ ```{figure} ./pages/images/SPI3-CHIRPS_Map_monitoring_Col.gif
+:name: fig-SPI-map-12months
+:alt: 
+Last 12 months of SPI-3 over Colombia, classified according to the WMO.
+```
+
 **Current El Niño Longitude Index (ELI) = 188.8 - Date: 2026-09-03 - [ENSO diversity](pages/part01/ENSO_diversity.md)**
 
 ---
