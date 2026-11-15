@@ -22,7 +22,7 @@ This helps to improve forecasts, adjust logistic processes and *reduce the impac
 Last 12 months of SPI-3 over Colombia, classified according to the WMO.
 ```
 
-**Current El Niño Longitude Index (ELI) = 188.8 - Date: 2026-09-03 - [ENSO diversity](pages/part01/ENSO_diversity.md)**
+**Current El Niño Longitude Index (ELI) = 189.2 - Date: 2026-10-04 - [ENSO diversity](pages/part01/ENSO_diversity.md)**
 
 ---
 
