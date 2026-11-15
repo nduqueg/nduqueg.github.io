@@ -51,7 +51,12 @@ project:
       - title: a
     - title: nduqueg@unal.edu.co
       children:
-      - title: a
+        - title: Email
+          url: mailto:nduqueg@unal.edu.co
+        - title: LinkedIn
+          url: https://www.linkedin.com/in/nicolas-duque-gardeazabal-phd-59a93683/?locale=en
+        - title: ResearchGate
+          url: https://www.researchgate.net/profile/Nicolas-Duque-Gardeazabal?ev=hdr_xprf
     - pattern: posts/*.md
       hidden: true
 site:
@@ -63,8 +68,8 @@ site:
     folders: true
     style: custom.css
     # analytics_google: G-XXX
-  actions:
-    - title: RSS
+  # actions:
+    # - title: RSS
       # url: https://opengeos.org/myst-website-template/rss.xml
       # - title: LinkedIn      
       # url: https://www.linkedin.com/in/nicolas-duque-gardeazabal-phd-59a93683/?locale=en
